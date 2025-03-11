@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Form</title>
+    <link rel="stylesheet" href="stylecontactform.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Hubungi Saya</h2>
+        <form id="contactForm" action="https://formspree.io/f/xrbpglyz" method="POST">
+            <div class="form-group">
+                <label for="name">Nama</label>
+                <input type="text" id="name" name="name" placeholder="Masukkan Nama" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="Masukkan Email" required>
+            </div>
+            <div class="form-group">
+                <label for="message">Pesan</label>
+                <textarea id="message" name="message" placeholder="Tulis pesan Anda" rows="4" required></textarea>
+            </div>
+            <div class="form-group-row">
+                <button type="submit">Kirim</button>
+            </div>
+        </form>
+        <p id="responseMessage">Pesan berhasil dikirim!</p>
+    </div>
+
+    <script>
+        document.getElementById("contactForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            
+            const form = event.target;
+            const responseMessage = document.getElementById("responseMessage");
+            
+            fetch(form.action, {
+                method: form.method,
+                body: new FormData(form),
+                headers: {
+                    "Accept": "application/json"
+                }
+            })
+            .then(response => {
+                if (response.ok) {
+                    responseMessage.style.display = "block";
+                    responseMessage.textContent = "Pesan berhasil dikirim!";
+                    responseMessage.style.color = "green";
+                    form.reset();
+                } else {
+                    return response.json().then(data => {
+                        throw new Error(data.error || "Terjadi kesalahan, coba lagi.");
+                    });
+                }
+            })
+            .catch(error => {
+                responseMessage.style.display = "block";
+                responseMessage.style.color = "red";
+                responseMessage.textContent = error.message;
+            });
+        });
+    </script>
+</body>
+</html>
