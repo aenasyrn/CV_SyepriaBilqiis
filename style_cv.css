@@ -1,9 +1,12 @@
+/* Mengatur tampilan seluruh halaman */
 body {
     font-family: Georgia, 'Times New Roman', Times, serif;
     margin: 0;
     padding: 0;
     background-color: #f9f9f9;
 }
+
+/* Mengatur tampilan elemen dengan class .container */
 .container {
     width: 800px;
     background: white;
@@ -12,6 +15,7 @@ body {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 20px;
 
+/* Mengatur tampilan elemen dengan class .sidebar */
 }
 .sidebar {
     width: 30%;
@@ -19,6 +23,8 @@ body {
     color: rgb(251, 251, 251);
     padding: 20px;
 }
+
+/* Mengatur tampilan gambar dalam elemen dengan class .sidebar */
 .sidebar img {
     width: 150px;
     height: 170px;
@@ -26,13 +32,19 @@ body {
     display: block;
     margin: 0 auto;
 }
+
+/* Mengatur lebar elemen dan memberikan jarak */
 .content {
     width: 70%;
     padding: 20px;
 }
+
+/* Mengatur teks agar rata kiri dan kanan */
 .content p{
     text-align: justify;
 }
+
+/*  Mengatur tampilan elemen <h1> */
 h1 {
     text-align: center;
     color: #413f33;
@@ -40,13 +52,19 @@ h1 {
     padding: 10px;
     border-radius: 10px;
 }
-h3, h4, h5 {
+
+/* Mengatur warna pada <h3> */
+h3 {
     color: #7a660b;
 }
+
+/* Mengatur tampilan elemen <ul> */
 ul {
     padding: 0;
     list-style: none;
 }
+
+/* Mengatur tampilan elemen <li> */
 li {
     margin-bottom: 10px;
 }
