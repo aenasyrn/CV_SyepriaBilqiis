@@ -29,7 +29,7 @@
         <p id="responseMessage">Pesan berhasil dikirim!</p>
     </div>
 
-    /* Mengambil elemen formulir dengan id="contactForm", Menambahkan event listener untuk menangani saat formulir dikirim dan Mencegah pengiriman formulir secara default-->
+    /* Mengambil elemen formulir dengan id="contactForm", Menambahkan event listener untuk menangani saat formulir dikirim dan Mencegah pengiriman formulir secara default */
     <script>
         document.getElementById("contactForm").addEventListener("submit", function(event) {
             event.preventDefault();
@@ -48,7 +48,7 @@
                 }
             })
 
-            /* memastikan pengguna mendapatkan umpan balik langsung setelah mengirim formulir, baik berhasil maupun gagal, tanpa perlu me-refresh halaman*/
+            /* Memastikan pengguna mendapatkan umpan balik langsung setelah mengirim formulir, baik berhasil maupun gagal, tanpa perlu me-refresh halaman*/
             .then(response => {
                 if (response.ok) {
                     responseMessage.style.display = "block";
@@ -62,7 +62,7 @@
                 }
             })
 
-            /* menangani kesalahan (error handling) jika pengiriman formulir mengalami kegagalan */
+            /* Menangani kesalahan (error handling) jika pengiriman formulir mengalami kegagalan */
             .catch(error => {
                 responseMessage.style.display = "block";
                 responseMessage.style.color = "red";
