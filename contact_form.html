@@ -2,17 +2,17 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
     <title>Contact Form</title>
     <link rel="stylesheet" href="stylecontactform.css">
 </head>
 <body>
     <div class="container">
         <h2>Hubungi Saya</h2>
-        <form id="contactForm" action="https://formspree.io/f/xrbpglyz" method="POST">
+        <form id="contactForm" action="https://formspree.io/f/xrbpglyz" method="POST"> <!--membuat formulir kontak dengan Formspree sebagai layanan backend untuk mengelola pengiriman data formulir-->
             <div class="form-group">
-                <label for="name">Nama</label>
-                <input type="text" id="name" name="name" placeholder="Masukkan Nama" required>
+                <label for="name">Nama</label> <!--memberikan keterangan pada input dan menghubungkan label dengan input yang memiliki id="name"-->
+                <input type="text" id="name" name="name" placeholder="Masukkan Nama" required> <!-- kolom input teks, menggunakan teks biasa, Menampilkan teks petunjuk di dalam input dan Membuat input wajib diisi-->
             </div>
             <div class="form-group">
                 <label for="email">Email</label>
@@ -20,22 +20,26 @@
             </div>
             <div class="form-group">
                 <label for="message">Pesan</label>
-                <textarea id="message" name="message" placeholder="Tulis pesan Anda" rows="4" required></textarea>
+                <textarea id="message" name="message" placeholder="Tulis pesan Anda" rows="4" required></textarea> <!--"textarea" membuat kolom teks yang lebih besar -->
             </div>
             <div class="form-group-row">
-                <button type="submit">Kirim</button>
+                <button type="submit">Kirim</button> <!-- "<button>" untuk membuat tombol interaktif dalam halaman -->
             </div>
         </form>
         <p id="responseMessage">Pesan berhasil dikirim!</p>
     </div>
 
+    /* Mengambil elemen formulir dengan id="contactForm", Menambahkan event listener untuk menangani saat formulir dikirim dan Mencegah pengiriman formulir secara default-->
     <script>
         document.getElementById("contactForm").addEventListener("submit", function(event) {
             event.preventDefault();
-            
-            const form = event.target;
+
+            /* Menyimpan referensi ke formulir yang dikirim dalam variabel form */
+            const form = event.target; 
+            /* Menampilkan pesan sukses atau error setelah formulir dikirim*/
             const responseMessage = document.getElementById("responseMessage");
-            
+
+            /* Mengirim data formulir ke URL yang ada di action dalam tag <form> */
             fetch(form.action, {
                 method: form.method,
                 body: new FormData(form),
@@ -43,6 +47,8 @@
                     "Accept": "application/json"
                 }
             })
+
+            /* memastikan pengguna mendapatkan umpan balik langsung setelah mengirim formulir, baik berhasil maupun gagal, tanpa perlu me-refresh halaman*/
             .then(response => {
                 if (response.ok) {
                     responseMessage.style.display = "block";
@@ -55,6 +61,8 @@
                     });
                 }
             })
+
+            /* menangani kesalahan (error handling) jika pengiriman formulir mengalami kegagalan */
             .catch(error => {
                 responseMessage.style.display = "block";
                 responseMessage.style.color = "red";
